@@ -4,7 +4,7 @@ use Core\App;
 use Core\Database;
 use Core\Validator;
 
-class NotesController {
+class NotesController implements NotesControllerInterface{
 
     function create() {
         view("notes/create.view.php", [
@@ -122,3 +122,19 @@ class NotesController {
     }
 }
 
+interface NotesControllerInterface {
+    function create();
+    function destroy($id);
+    function edit($id);
+    function show();
+    function store();
+    function update($id);
+
+}
+
+class NotesControllerFactory {
+    private static $_instance;
+    public function __construct() {
+
+    }
+}
